@@ -13,6 +13,7 @@
     "build:esm": "tsc --outDir dist/esm",
     "build:types": "tsc --declaration --emitDeclarationOnly --outDir dist/types",
     "build": "npm run lint && npm run test && rimraf dist && concurrently --names 'UMD,ESM,TYPES' 'npm run build:umd' 'npm run build:esm' 'npm run build:types'",
+    "prepare": "npm run build:umd && npm run build:esm && npm run build:types",
     "gh-publish": "rimraf examples/dist && npm run build && cp -r dist examples && gh-pages -d examples"
   },
   "files": [
